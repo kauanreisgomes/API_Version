@@ -1,7 +1,14 @@
 # API_Version
 Uma ApiRest para controle de versionamento de Programas.
 
-*1 PASSO CRIAR TABELAS NO BANCO:*
+Tipo de Projeto: Maven
+Frameworks: SpringBoot WEB
+Tipo do Banco: MySQL
+Nome do Banco: api
+Usuário: api
+Senha: 123456789
+
+*1 PASSO CRIAR TABELAS NO BANCO MYSQL:*
 
 create table tb_versao(
 	id BIGINT auto_increment,
