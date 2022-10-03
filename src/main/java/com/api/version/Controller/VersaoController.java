@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.api.version.Functions;
 import com.api.version.Dao.Query;
 import com.api.version.Model.Objeto;
+import com.functions.Functions;
 
 @RestController
 public class VersaoController {
