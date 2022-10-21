@@ -1,0 +1,30 @@
+#ponto{
+    max-width: 10px;
+    align-items: baseline;
+    text-align: center;
+    margin-top: 25px;
+    padding: 0%;
+   
+}
+
+.container{
+    max-width: 100px;
+}
+
+div.col{
+    max-width: 30px;
+    margin-right: 10px; margin-left: 10px;
+    
+}
+
+input.form-control{
+    text-align: center;
+    width: 50px;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 0px;
+  }

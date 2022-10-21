@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.api.version.Model.Objeto;
@@ -251,6 +252,112 @@ public class Query {
 
 	}
 	
+	
+    public static List<HashMap<String,Object>> queryHash(Object[] parametros) {
+		List<HashMap<String,Object>> lista = new ArrayList<>();
+		
+		String sql = (String)parametros[0];
+		parametros[1] = ((String)parametros[1]).toLowerCase();
+		/*if(parametros.length>2){
+			parametros[2] = ((String)parametros[2]).toLowerCase();
+		}*/
+
+		try {
+			if(open){
+				if(con == null || con.isClosed()){
+					con = ConnectionFactory.getConnection();
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		try (PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery()) {
+			
+
+			if (parametros[1].equals("objeto")) {
+				ResultSetMetaData meta = rs.getMetaData();
+				
+				while (rs.next()) {
+					HashMap<String,Object> map = new HashMap<>();
+					for (int i = 1; i <= meta.getColumnCount(); i++) {
+
+						map.put(meta.getColumnLabel(i), rs.getString(i));
+					}
+						
+					lista.add(map);
+				}
+
+			} 
+			
+			/*else if (parametros[1].equals("objeto combobox")) {
+				Objeto obj = new Objeto();
+				ResultSetMetaData meta = rs.getMetaData();
+				List<Object> columname = new ArrayList<>();
+
+				for (int i = 1; i <= meta.getColumnCount(); i++) {
+
+					columname.add(meta.getColumnLabel(i));
+					
+				}
+				
+			
+				while (rs.next()) {
+					List<Object> l = new ArrayList<>();
+					obj = new Objeto();
+					for (int i = 1; i <= meta.getColumnCount(); i++) {
+						l.add(rs.getString(i));
+					}
+					obj.l.add(columname);
+					obj.l.add(l);
+					obj.toString = (String)obj.getFirst((String)parametros[2]);
+					for (int i = 3; i < parametros.length; i++) {
+						obj.valuestosearch.add((String)parametros[i]);
+					}
+
+					lista.add(obj);
+				}
+
+			} */
+			/*else if (parametros[1].equals("relatorio") || parametros[1].equals("objetos")) {
+				Objeto obj = new Objeto();
+				ResultSetMetaData meta = rs.getMetaData();
+				List<Object> l = new ArrayList<>();
+				List<List<Object>> valores = new ArrayList<>();
+			
+				obj.l.add(l);
+
+				while (rs.next()) {
+					
+					l = new ArrayList<>();
+					for (int i = 1; i <= meta.getColumnCount(); i++) {
+						l.add(rs.getString(i));
+						
+					}
+					valores.add(l);
+
+				}
+
+				for (int i = 1; i <= meta.getColumnCount(); i++) {
+
+					l.add(meta.getColumnLabel(i));
+
+				}
+				lista = new ArrayList<>();
+				lista.add(obj);
+			}*/
+
+		
+		} catch (NumberFormatException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return lista;
+
+	}
+
 	/***
 	 * Recebe
 	 * 
