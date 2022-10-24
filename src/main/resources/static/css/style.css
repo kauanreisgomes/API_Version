@@ -27,4 +27,16 @@ input.form-control{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     padding: 0px;
-  }
+}
+
+.alert{
+    display: none;
+}
+
+#formulario-prog{
+    display: none;
+}
+
+#enviar_load{
+    display: none;
+}

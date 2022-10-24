@@ -11,28 +11,32 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <!--script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    
 </head>
-<body style = "padding: 10%;">
-    <!--form action="localhost:8080/versao/save" method="post">
-        <div>
-            <label for="programa">Programa:</label>
-            <select id="programa">
-                
-            </select>
+<body style = "padding: 10%;" id="body">
+    
+        
+        <!--img src="imagens/ajax-loader.gif" id="loader"-->
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status" id="loader">
+                <span class="sr-only">Loading...</span>
+            </div>
         </div>
-        <div>
-            <label for="email">Versão:</label>
-            <input type="email" id="email" />
+
+        <div class="alert alert-danger" role="alert" id="alert-danger">
+            
         </div>
-        <div>
-            <label for="file-prog">File:</label>
-            <input type="file" id="file-prog"/>
+        <div class="alert alert-warning" role="alert" id="alert-warning">
+          
         </div>
-    </form-->
+        <div class="alert alert-success" role="alert" id="alert-sucess">
+           
+        </div>
+
         <form style = "max-width: 300px;max-height: 300px;" id="formulario-prog">
             <div class="form-group">
             <label for="programa">Programa</label>
@@ -64,10 +68,15 @@
             </div>     
             <div class="form-group">
                 <label for="file-prog">Arquivo da versão</label>
-                <input type="file" accept=".jar, .exe" class="form-control-file" id="file-prog" required>
+                <input type="file" accept=".jar, .exe" class="form-control-file" id="file" required>
             </div>   
             <button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
+            <button class="btn btn-primary" type="button" id="enviar_load" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+            </button>
         </form>
      <script src="scripts/script.js"></script>
+
 </body>
 </html>
