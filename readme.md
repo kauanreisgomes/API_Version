@@ -10,26 +10,29 @@ Uma <Strong>ApiRest</Strong> para controle de versionamento de Programas.
 </ul>
 <h2>1 PASSO CRIAR TABELAS NO BANCO MYSQL:</h2>
 <p>
-CREATE TABLE tb_versao(<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	id BIGINT auto_increment,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	id_prog BIGINT not NULL,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	file longblob,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	data_lancamento TIMESTAMP not null default CURRENT_TIMESTAMP,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	versao VARCHAR(255),<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	user bigint,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	status tinyint,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	primary key(id)<br/>
-);
+
+CREATE TABLE `tb_programa` (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `id` bigint NOT NULL AUTO_INCREMENT,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `nome` varchar(255) NOT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `file_prog` longblob,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `file_old` longblob,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `data_cadastro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `user` bigint DEFAULT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `status` tinyint DEFAULT '0',<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  PRIMARY KEY (`id`)<br/>
+)
+
 </p><br/>
 <hr/> 
 <p>
-CREATE TABLE tb_programa(<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	id BIGINT auto_increment,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	nome varchar(255) not NULL,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	data_cadastro TIMESTAMP not null default CURRENT_TIMESTAMP,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	versao VARCHAR(255),<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	user bigint,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	status tinyint,<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;	primary key(id)<br/>
-);
+
+CREATE TABLE `tb_versao` (<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `id` bigint NOT NULL AUTO_INCREMENT,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `id_prog` bigint NOT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `data_lancamento` timestamp NULL DEFAULT CURRENT_TIMESTAMP,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `versao` varchar(255) DEFAULT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `user` bigint DEFAULT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  `status` tinyint DEFAULT NULL,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  PRIMARY KEY (`id`)<br/>
+)
 </p>
