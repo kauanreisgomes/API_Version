@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Download Manual</title>
+    <link rel="stylesheet" href="css/style_download.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loader">
+          <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" id="alert-danger">
+            
+    </div>
+    <div class="alert alert-warning" role="alert" id="alert-warning">
+      
+    </div>
+    <div class="alert alert-success" role="alert" id="alert-sucess">
+       
+    </div>
+
+    <form id="form">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="programas">Programa</label>
+                <select id="programas" class="form-control" required>
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button">Download</button>
+        <button class="btn btn-primary" type="button" disabled id="button_load">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+        </button>
+    </form>
+    <script type="module" src="scripts/download.js"></script>
+</body>
+</html>

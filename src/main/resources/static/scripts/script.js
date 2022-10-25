@@ -1,8 +1,4 @@
-
-/*$("document").ready(function(){
-    $("#loader").show();
-    myvar = 
-})*/
+import * as funcoes from "./functions.js";
 
 $.ajax({
     url: 'http://localhost:8080/programa',
@@ -33,15 +29,10 @@ $.ajax({
 function showPage(){
     $("#loader").hide();
     $("#formulario-prog").show();
+
 }
 
-function isNull(teste){
-    if(teste == null || teste == ""){
-        return true;
-    }else{
-        return false;
-    }
-}
+
 
 
 $('#formulario-prog').on('submit', (event) => {
@@ -81,10 +72,7 @@ function sendVersion(id_prog,versao,user,status){
             setInterval('location.reload()', 1000); 
             $('#alert-sucess').text('Versão salva com sucesso!');
             $('#alert-sucess').alert('show');
-            closeSlow($('#alert-sucess'));
-
-            $("#enviar_load").hide();
-            $("#enviar").show();
+            funcoes.closeSlow($('#alert-sucess'));
            
         },
         
@@ -92,10 +80,11 @@ function sendVersion(id_prog,versao,user,status){
             console.log(error)
             $("#alert-danger").alert('show')
             $("#alert-danger").text("Erro ao salvar a versão!");
-            closeSlow($('#alert-danger'));
+            funcoes.closeSlow($('#alert-danger'));
 
             $("#enviar_load").hide();
             $("#enviar").show();
+            $("#formulario-prog").attr("disabled",false);
         }
     })
 
@@ -117,24 +106,23 @@ function sendFile(file){
         enctype: 'multipart/form-data',
         processData: false,
         data: data,
+        success: function(){
+            $("#enviar_load").hide();
+            $("#enviar").show();
+            $("#formulario-prog").attr("disabled",false);
+        },
         error: function(error){
             console.log(error),
             //console.log("Deu erro ao enviar o arquivo")
             $("#alert-warning").alert('show')
             $("#alert-warning").text("Erro ao enviar o arquivo!");
-            closeSlow($('#alert-warning'));
+            funcoes.closeSlow($('#alert-warning'));
 
             $("#enviar_load").hide();
             $("#enviar").show();
+            $("#formulario-prog").attr("disabled",false);
         }
               
     });
 }
 
-function closeSlow(alert){
-    setTimeout(function() {
-        alert.fadeOut("slow", function(){
-            $(this).hide();
-        });				
-    }, 5000);
-}

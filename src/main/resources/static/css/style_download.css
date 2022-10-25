@@ -1,0 +1,16 @@
+.alert{
+    display: none;
+}
+
+form{
+    display: none;
+    margin: 10%;
+}
+
+#programas{
+    max-width: 300px;
+}
+
+#button_load{
+    display: none;
+}
